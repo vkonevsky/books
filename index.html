@@ -1,0 +1,599 @@
+<!doctype html>
+<html>
+<head>
+<meta charset='UTF-8'><meta name='viewport' content='width=device-width initial-scale=1'>
+
+<link href='https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext' rel='stylesheet' type='text/css' /><style type='text/css'>html {overflow-x: initial !important;}:root { --bg-color:#ffffff; --text-color:#333333; --select-text-bg-color:#B5D6FC; --select-text-font-color:auto; --monospace:"Lucida Console",Consolas,"Courier",monospace; --title-bar-height:20px; }
+.mac-os-11 { --title-bar-height:28px; }
+html { font-size: 14px; background-color: var(--bg-color); color: var(--text-color); font-family: "Helvetica Neue", Helvetica, Arial, sans-serif; -webkit-font-smoothing: antialiased; }
+body { margin: 0px; padding: 0px; height: auto; inset: 0px; font-size: 1rem; line-height: 1.42857; overflow-x: hidden; background: inherit; tab-size: 4; }
+iframe { margin: auto; }
+a.url { word-break: break-all; }
+a:active, a:hover { outline: 0px; }
+.in-text-selection, ::selection { text-shadow: none; background: var(--select-text-bg-color); color: var(--select-text-font-color); }
+#write { margin: 0px auto; height: auto; width: inherit; word-break: normal; overflow-wrap: break-word; position: relative; white-space: normal; overflow-x: visible; padding-top: 36px; }
+#write.first-line-indent p { text-indent: 2em; }
+#write.first-line-indent li p, #write.first-line-indent p * { text-indent: 0px; }
+#write.first-line-indent li { margin-left: 2em; }
+.for-image #write { padding-left: 8px; padding-right: 8px; }
+body.typora-export { padding-left: 30px; padding-right: 30px; }
+.typora-export .footnote-line, .typora-export li, .typora-export p { white-space: pre-wrap; }
+.typora-export .task-list-item input { pointer-events: none; }
+@media screen and (max-width: 500px) {
+  body.typora-export { padding-left: 0px; padding-right: 0px; }
+  #write { padding-left: 20px; padding-right: 20px; }
+  .CodeMirror-sizer { margin-left: 0px !important; }
+  .CodeMirror-gutters { display: none !important; }
+}
+#write li > figure:last-child { margin-bottom: 0.5rem; }
+#write ol, #write ul { position: relative; }
+img { max-width: 100%; vertical-align: middle; image-orientation: from-image; }
+button, input, select, textarea { color: inherit; font: inherit; }
+input[type="checkbox"], input[type="radio"] { line-height: normal; padding: 0px; }
+*, ::after, ::before { box-sizing: border-box; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p, #write pre { width: inherit; }
+#write h1, #write h2, #write h3, #write h4, #write h5, #write h6, #write p { position: relative; }
+p { line-height: inherit; }
+h1, h2, h3, h4, h5, h6 { break-after: avoid-page; break-inside: avoid; orphans: 4; }
+p { orphans: 4; }
+h1 { font-size: 2rem; }
+h2 { font-size: 1.8rem; }
+h3 { font-size: 1.6rem; }
+h4 { font-size: 1.4rem; }
+h5 { font-size: 1.2rem; }
+h6 { font-size: 1rem; }
+.md-math-block, .md-rawblock, h1, h2, h3, h4, h5, h6, p { margin-top: 1rem; margin-bottom: 1rem; }
+.hidden { display: none; }
+.md-blockmeta { color: rgb(204, 204, 204); font-weight: 700; font-style: italic; }
+a { cursor: pointer; }
+sup.md-footnote { padding: 2px 4px; background-color: rgba(238, 238, 238, 0.7); color: rgb(85, 85, 85); border-radius: 4px; cursor: pointer; }
+sup.md-footnote a, sup.md-footnote a:hover { color: inherit; text-transform: inherit; text-decoration: inherit; }
+#write input[type="checkbox"] { cursor: pointer; width: inherit; height: inherit; }
+figure { overflow-x: auto; margin: 1.2em 0px; max-width: calc(100% + 16px); padding: 0px; }
+figure > table { margin: 0px; }
+tr { break-inside: avoid; break-after: auto; }
+thead { display: table-header-group; }
+table { border-collapse: collapse; border-spacing: 0px; width: 100%; overflow: auto; break-inside: auto; text-align: left; }
+table.md-table td { min-width: 32px; }
+.CodeMirror-gutters { border-right: 0px; background-color: inherit; }
+.CodeMirror-linenumber { user-select: none; }
+.CodeMirror { text-align: left; }
+.CodeMirror-placeholder { opacity: 0.3; }
+.CodeMirror pre { padding: 0px 4px; }
+.CodeMirror-lines { padding: 0px; }
+div.hr:focus { cursor: none; }
+#write pre { white-space: pre-wrap; }
+#write.fences-no-line-wrapping pre { white-space: pre; }
+#write pre.ty-contain-cm { white-space: normal; }
+.CodeMirror-gutters { margin-right: 4px; }
+.md-fences { font-size: 0.9rem; display: block; break-inside: avoid; text-align: left; overflow: visible; white-space: pre; background: inherit; position: relative !important; }
+.md-fences-adv-panel { width: 100%; margin-top: 10px; text-align: center; padding-top: 0px; padding-bottom: 8px; overflow-x: auto; }
+#write .md-fences.mock-cm { white-space: pre-wrap; }
+.md-fences.md-fences-with-lineno { padding-left: 0px; }
+#write.fences-no-line-wrapping .md-fences.mock-cm { white-space: pre; overflow-x: auto; }
+.md-fences.mock-cm.md-fences-with-lineno { padding-left: 8px; }
+.CodeMirror-line, twitterwidget { break-inside: avoid; }
+.footnotes { opacity: 0.8; font-size: 0.9rem; margin-top: 1em; margin-bottom: 1em; }
+.footnotes + .footnotes { margin-top: 0px; }
+.md-reset { margin: 0px; padding: 0px; border: 0px; outline: 0px; vertical-align: top; background: 0px 0px; text-decoration: none; text-shadow: none; float: none; position: static; width: auto; height: auto; white-space: nowrap; cursor: inherit; -webkit-tap-highlight-color: transparent; line-height: normal; font-weight: 400; text-align: left; box-sizing: content-box; direction: ltr; }
+li div { padding-top: 0px; }
+blockquote { margin: 1rem 0px; }
+li .mathjax-block, li p { margin: 0.5rem 0px; }
+li blockquote { margin: 1rem 0px; }
+li { margin: 0px; position: relative; }
+blockquote > :last-child { margin-bottom: 0px; }
+blockquote > :first-child, li > :first-child { margin-top: 0px; }
+.footnotes-area { color: rgb(136, 136, 136); margin-top: 0.714rem; padding-bottom: 0.143rem; white-space: normal; }
+#write .footnote-line { white-space: pre-wrap; }
+@media print {
+  body, html { border: 1px solid transparent; height: 99%; break-after: avoid; break-before: avoid; font-variant-ligatures: no-common-ligatures; }
+  #write { margin-top: 0px; padding-top: 0px; border-color: transparent !important; }
+  .typora-export * { -webkit-print-color-adjust: exact; }
+  .typora-export #write { break-after: avoid; }
+  .typora-export #write::after { height: 0px; }
+  .is-mac table { break-inside: avoid; }
+  .typora-export-show-outline .typora-export-sidebar { display: none; }
+}
+.footnote-line { margin-top: 0.714em; font-size: 0.7em; }
+a img, img a { cursor: pointer; }
+pre.md-meta-block { font-size: 0.8rem; min-height: 0.8rem; white-space: pre-wrap; background: rgb(204, 204, 204); display: block; overflow-x: hidden; }
+p > .md-image:only-child:not(.md-img-error) img, p > img:only-child { display: block; margin: auto; }
+#write.first-line-indent p > .md-image:only-child:not(.md-img-error) img { left: -2em; position: relative; }
+p > .md-image:only-child { display: inline-block; width: 100%; }
+#write .MathJax_Display { margin: 0.8em 0px 0px; }
+.md-math-block { width: 100%; }
+.md-math-block:not(:empty)::after { display: none; }
+.MathJax_ref { fill: currentcolor; }
+[contenteditable="true"]:active, [contenteditable="true"]:focus, [contenteditable="false"]:active, [contenteditable="false"]:focus { outline: 0px; box-shadow: none; }
+.md-task-list-item { position: relative; list-style-type: none; }
+.task-list-item.md-task-list-item { padding-left: 0px; }
+.md-task-list-item > input { position: absolute; top: 0px; left: 0px; margin-left: -1.2em; margin-top: calc(1em - 10px); border: none; }
+.math { font-size: 1rem; }
+.md-toc { min-height: 3.58rem; position: relative; font-size: 0.9rem; border-radius: 10px; }
+.md-toc-content { position: relative; margin-left: 0px; }
+.md-toc-content::after, .md-toc::after { display: none; }
+.md-toc-item { display: block; color: rgb(65, 131, 196); }
+.md-toc-item a { text-decoration: none; }
+.md-toc-inner:hover { text-decoration: underline; }
+.md-toc-inner { display: inline-block; cursor: pointer; }
+.md-toc-h1 .md-toc-inner { margin-left: 0px; font-weight: 700; }
+.md-toc-h2 .md-toc-inner { margin-left: 2em; }
+.md-toc-h3 .md-toc-inner { margin-left: 4em; }
+.md-toc-h4 .md-toc-inner { margin-left: 6em; }
+.md-toc-h5 .md-toc-inner { margin-left: 8em; }
+.md-toc-h6 .md-toc-inner { margin-left: 10em; }
+@media screen and (max-width: 48em) {
+  .md-toc-h3 .md-toc-inner { margin-left: 3.5em; }
+  .md-toc-h4 .md-toc-inner { margin-left: 5em; }
+  .md-toc-h5 .md-toc-inner { margin-left: 6.5em; }
+  .md-toc-h6 .md-toc-inner { margin-left: 8em; }
+}
+a.md-toc-inner { font-size: inherit; font-style: inherit; font-weight: inherit; line-height: inherit; }
+.footnote-line a:not(.reversefootnote) { color: inherit; }
+.md-attr { display: none; }
+.md-fn-count::after { content: "."; }
+code, pre, samp, tt { font-family: var(--monospace); }
+kbd { margin: 0px 0.1em; padding: 0.1em 0.6em; font-size: 0.8em; color: rgb(36, 39, 41); background: rgb(255, 255, 255); border: 1px solid rgb(173, 179, 185); border-radius: 3px; box-shadow: rgba(12, 13, 14, 0.2) 0px 1px 0px, rgb(255, 255, 255) 0px 0px 0px 2px inset; white-space: nowrap; vertical-align: middle; }
+.md-comment { color: rgb(162, 127, 3); opacity: 0.6; font-family: var(--monospace); }
+code { text-align: left; vertical-align: initial; }
+a.md-print-anchor { white-space: pre !important; border-width: initial !important; border-style: none !important; border-color: initial !important; display: inline-block !important; position: absolute !important; width: 1px !important; right: 0px !important; outline: 0px !important; background: 0px 0px !important; text-decoration: initial !important; text-shadow: initial !important; }
+.os-windows.monocolor-emoji .md-emoji { font-family: "Segoe UI Symbol", sans-serif; }
+.md-diagram-panel > svg { max-width: 100%; }
+[lang="flow"] svg, [lang="mermaid"] svg { max-width: 100%; height: auto; }
+[lang="mermaid"] .node text { font-size: 1rem; }
+table tr th { border-bottom: 0px; }
+video { max-width: 100%; display: block; margin: 0px auto; }
+iframe { max-width: 100%; width: 100%; border: none; }
+.highlight td, .highlight tr { border: 0px; }
+mark { background: rgb(255, 255, 0); color: rgb(0, 0, 0); }
+.md-html-inline .md-plain, .md-html-inline strong, mark .md-inline-math, mark strong { color: inherit; }
+.md-expand mark .md-meta { opacity: 0.3 !important; }
+mark .md-meta { color: rgb(0, 0, 0); }
+@media print {
+  .typora-export h1, .typora-export h2, .typora-export h3, .typora-export h4, .typora-export h5, .typora-export h6 { break-inside: avoid; }
+}
+.md-diagram-panel .messageText { stroke: none !important; }
+.md-diagram-panel .start-state { fill: var(--node-fill); }
+.md-diagram-panel .edgeLabel rect { opacity: 1 !important; }
+.md-fences.md-fences-math { font-size: 1em; }
+.md-fences-advanced:not(.md-focus) { padding: 0px; white-space: nowrap; border: 0px; }
+.md-fences-advanced:not(.md-focus) { background: inherit; }
+.typora-export-show-outline .typora-export-content { max-width: 1440px; margin: auto; display: flex; flex-direction: row; }
+.typora-export-sidebar { width: 300px; font-size: 0.8rem; margin-top: 80px; margin-right: 18px; }
+.typora-export-show-outline #write { --webkit-flex:2; flex: 2 1 0%; }
+.typora-export-sidebar .outline-content { position: fixed; top: 0px; max-height: 100%; overflow: hidden auto; padding-bottom: 30px; padding-top: 60px; width: 300px; }
+@media screen and (max-width: 1024px) {
+  .typora-export-sidebar, .typora-export-sidebar .outline-content { width: 240px; }
+}
+@media screen and (max-width: 800px) {
+  .typora-export-sidebar { display: none; }
+}
+.outline-content li, .outline-content ul { margin-left: 0px; margin-right: 0px; padding-left: 0px; padding-right: 0px; list-style: none; }
+.outline-content ul { margin-top: 0px; margin-bottom: 0px; }
+.outline-content strong { font-weight: 400; }
+.outline-expander { width: 1rem; height: 1.42857rem; position: relative; display: table-cell; vertical-align: middle; cursor: pointer; padding-left: 4px; }
+.outline-expander::before { content: ""; position: relative; font-family: Ionicons; display: inline-block; font-size: 8px; vertical-align: middle; }
+.outline-item { padding-top: 3px; padding-bottom: 3px; cursor: pointer; }
+.outline-expander:hover::before { content: ""; }
+.outline-h1 > .outline-item { padding-left: 0px; }
+.outline-h2 > .outline-item { padding-left: 1em; }
+.outline-h3 > .outline-item { padding-left: 2em; }
+.outline-h4 > .outline-item { padding-left: 3em; }
+.outline-h5 > .outline-item { padding-left: 4em; }
+.outline-h6 > .outline-item { padding-left: 5em; }
+.outline-label { cursor: pointer; display: table-cell; vertical-align: middle; text-decoration: none; color: inherit; }
+.outline-label:hover { text-decoration: underline; }
+.outline-item:hover { border-color: rgb(245, 245, 245); background-color: var(--item-hover-bg-color); }
+.outline-item:hover { margin-left: -28px; margin-right: -28px; border-left: 28px solid transparent; border-right: 28px solid transparent; }
+.outline-item-single .outline-expander::before, .outline-item-single .outline-expander:hover::before { display: none; }
+.outline-item-open > .outline-item > .outline-expander::before { content: ""; }
+.outline-children { display: none; }
+.info-panel-tab-wrapper { display: none; }
+.outline-item-open > .outline-children { display: block; }
+.typora-export .outline-item { padding-top: 1px; padding-bottom: 1px; }
+.typora-export .outline-item:hover { margin-right: -8px; border-right: 8px solid transparent; }
+.typora-export .outline-expander::before { content: "+"; font-family: inherit; top: -1px; }
+.typora-export .outline-expander:hover::before, .typora-export .outline-item-open > .outline-item > .outline-expander::before { content: "−"; }
+.typora-export-collapse-outline .outline-children { display: none; }
+.typora-export-collapse-outline .outline-item-open > .outline-children, .typora-export-no-collapse-outline .outline-children { display: block; }
+.typora-export-no-collapse-outline .outline-expander::before { content: "" !important; }
+.typora-export-show-outline .outline-item-active > .outline-item .outline-label { font-weight: 700; }
+.md-inline-math-container mjx-container { zoom: 0.95; }
+
+
+:root {
+    --side-bar-bg-color: #fafafa;
+    --control-text-color: #777;
+}
+
+@include-when-export url(https://fonts.loli.net/css?family=Open+Sans:400italic,700italic,700,400&subset=latin,latin-ext);
+
+/* open-sans-regular - latin-ext_latin */
+  /* open-sans-italic - latin-ext_latin */
+    /* open-sans-700 - latin-ext_latin */
+    /* open-sans-700italic - latin-ext_latin */
+  html {
+    font-size: 16px;
+    -webkit-font-smoothing: antialiased;
+}
+
+body {
+    font-family: "Open Sans","Clear Sans", "Helvetica Neue", Helvetica, Arial, 'Segoe UI Emoji', sans-serif;
+    color: rgb(51, 51, 51);
+    line-height: 1.6;
+}
+
+#write {
+    max-width: 860px;
+  	margin: 0 auto;
+  	padding: 30px;
+    padding-bottom: 100px;
+}
+
+@media only screen and (min-width: 1400px) {
+	#write {
+		max-width: 1024px;
+	}
+}
+
+@media only screen and (min-width: 1800px) {
+	#write {
+		max-width: 1200px;
+	}
+}
+
+#write > ul:first-child,
+#write > ol:first-child{
+    margin-top: 30px;
+}
+
+a {
+    color: #4183C4;
+}
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+    position: relative;
+    margin-top: 1rem;
+    margin-bottom: 1rem;
+    font-weight: bold;
+    line-height: 1.4;
+    cursor: text;
+}
+h1:hover a.anchor,
+h2:hover a.anchor,
+h3:hover a.anchor,
+h4:hover a.anchor,
+h5:hover a.anchor,
+h6:hover a.anchor {
+    text-decoration: none;
+}
+h1 tt,
+h1 code {
+    font-size: inherit;
+}
+h2 tt,
+h2 code {
+    font-size: inherit;
+}
+h3 tt,
+h3 code {
+    font-size: inherit;
+}
+h4 tt,
+h4 code {
+    font-size: inherit;
+}
+h5 tt,
+h5 code {
+    font-size: inherit;
+}
+h6 tt,
+h6 code {
+    font-size: inherit;
+}
+h1 {
+    font-size: 2.25em;
+    line-height: 1.2;
+    border-bottom: 1px solid #eee;
+}
+h2 {
+    font-size: 1.75em;
+    line-height: 1.225;
+    border-bottom: 1px solid #eee;
+}
+
+/*@media print {
+    .typora-export h1,
+    .typora-export h2 {
+        border-bottom: none;
+        padding-bottom: initial;
+    }
+
+    .typora-export h1::after,
+    .typora-export h2::after {
+        content: "";
+        display: block;
+        height: 100px;
+        margin-top: -96px;
+        border-top: 1px solid #eee;
+    }
+}*/
+
+h3 {
+    font-size: 1.5em;
+    line-height: 1.43;
+}
+h4 {
+    font-size: 1.25em;
+}
+h5 {
+    font-size: 1em;
+}
+h6 {
+   font-size: 1em;
+    color: #777;
+}
+p,
+blockquote,
+ul,
+ol,
+dl,
+table{
+    margin: 0.8em 0;
+}
+li>ol,
+li>ul {
+    margin: 0 0;
+}
+hr {
+    height: 2px;
+    padding: 0;
+    margin: 16px 0;
+    background-color: #e7e7e7;
+    border: 0 none;
+    overflow: hidden;
+    box-sizing: content-box;
+}
+
+li p.first {
+    display: inline-block;
+}
+ul,
+ol {
+    padding-left: 30px;
+}
+ul:first-child,
+ol:first-child {
+    margin-top: 0;
+}
+ul:last-child,
+ol:last-child {
+    margin-bottom: 0;
+}
+blockquote {
+    border-left: 4px solid #dfe2e5;
+    padding: 0 15px;
+    color: #777777;
+}
+blockquote blockquote {
+    padding-right: 0;
+}
+table {
+    padding: 0;
+    word-break: initial;
+}
+table tr {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 0;
+}
+table tr:nth-child(2n),
+thead {
+    background-color: #f8f8f8;
+}
+table th {
+    font-weight: bold;
+    border: 1px solid #dfe2e5;
+    border-bottom: 0;
+    margin: 0;
+    padding: 6px 13px;
+}
+table td {
+    border: 1px solid #dfe2e5;
+    margin: 0;
+    padding: 6px 13px;
+}
+table th:first-child,
+table td:first-child {
+    margin-top: 0;
+}
+table th:last-child,
+table td:last-child {
+    margin-bottom: 0;
+}
+
+.CodeMirror-lines {
+    padding-left: 4px;
+}
+
+.code-tooltip {
+    box-shadow: 0 1px 1px 0 rgba(0,28,36,.3);
+    border-top: 1px solid #eef2f2;
+}
+
+.md-fences,
+code,
+tt {
+    border: 1px solid #e7eaed;
+    background-color: #f8f8f8;
+    border-radius: 3px;
+    padding: 0;
+    padding: 2px 4px 0px 4px;
+    font-size: 0.9em;
+}
+
+code {
+    background-color: #f3f4f4;
+    padding: 0 2px 0 2px;
+}
+
+.md-fences {
+    margin-bottom: 15px;
+    margin-top: 15px;
+    padding-top: 8px;
+    padding-bottom: 6px;
+}
+
+
+.md-task-list-item > input {
+  margin-left: -1.3em;
+}
+
+@media print {
+    html {
+        font-size: 13px;
+    }
+    table,
+    pre {
+        page-break-inside: avoid;
+    }
+    pre {
+        word-wrap: break-word;
+    }
+}
+
+.md-fences {
+	background-color: #f8f8f8;
+}
+#write pre.md-meta-block {
+	padding: 1rem;
+    font-size: 85%;
+    line-height: 1.45;
+    background-color: #f7f7f7;
+    border: 0;
+    border-radius: 3px;
+    color: #777777;
+    margin-top: 0 !important;
+}
+
+.mathjax-block>.code-tooltip {
+	bottom: .375rem;
+}
+
+.md-mathjax-midline {
+    background: #fafafa;
+}
+
+#write>h3.md-focus:before{
+	left: -1.5625rem;
+	top: .375rem;
+}
+#write>h4.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h5.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+#write>h6.md-focus:before{
+	left: -1.5625rem;
+	top: .285714286rem;
+}
+.md-image>.md-meta {
+    /*border: 1px solid #ddd;*/
+    border-radius: 3px;
+    padding: 2px 0px 0px 4px;
+    font-size: 0.9em;
+    color: inherit;
+}
+
+.md-tag {
+    color: #a7a7a7;
+    opacity: 1;
+}
+
+.md-toc { 
+    margin-top:20px;
+    padding-bottom:20px;
+}
+
+.sidebar-tabs {
+    border-bottom: none;
+}
+
+#typora-quick-open {
+    border: 1px solid #ddd;
+    background-color: #f8f8f8;
+}
+
+#typora-quick-open-item {
+    background-color: #FAFAFA;
+    border-color: #FEFEFE #e5e5e5 #e5e5e5 #eee;
+    border-style: solid;
+    border-width: 1px;
+}
+
+/** focus mode */
+.on-focus-mode blockquote {
+    border-left-color: rgba(85, 85, 85, 0.12);
+}
+
+header, .context-menu, .megamenu-content, footer{
+    font-family: "Segoe UI", "Arial", sans-serif;
+}
+
+.file-node-content:hover .file-node-icon,
+.file-node-content:hover .file-node-open-state{
+    visibility: visible;
+}
+
+.mac-seamless-mode #typora-sidebar {
+    background-color: #fafafa;
+    background-color: var(--side-bar-bg-color);
+}
+
+.md-lang {
+    color: #b4654d;
+}
+
+/*.html-for-mac {
+    --item-hover-bg-color: #E6F0FE;
+}*/
+
+#md-notification .btn {
+    border: 0;
+}
+
+.dropdown-menu .divider {
+    border-color: #e5e5e5;
+    opacity: 0.4;
+}
+
+.ty-preferences .window-content {
+    background-color: #fafafa;
+}
+
+.ty-preferences .nav-group-item.active {
+    color: white;
+    background: #999;
+}
+
+.menu-item-container a.menu-style-btn {
+    background-color: #f5f8fa;
+    background-image: linear-gradient( 180deg , hsla(0, 0%, 100%, 0.8), hsla(0, 0%, 100%, 0)); 
+}
+
+
+ .typora-export li, .typora-export p, .typora-export,  .footnote-line {white-space: normal;} 
+</style><title>books</title>
+</head>
+<body class='typora-export os-windows'><div class='typora-export-content'>
+<div id='write'  class=''><h1 id='книги'><strong><span>Книги</span></strong></h1><p><span>Я хочу больше читать, поэтому создал этот раздел. Моя цель две книги в месяц и здесь планирую вести форму отчётности с небольшими рецензиями по прочитанным книгам. Возможно вы найдете что то интересное для себя.</span></p><hr /><h1 id='2023'><span>2023</span></h1><h3 id='апрель-1'><strong><span>Апрель</span></strong></h3><ul><li><strong><span>Эрих Мария Ремарк &quot;На западном фронте без перемен&quot;</span></strong><span> </span></li></ul><p><span>Ремарк один из моих любимых авторов. И данное произведение открыло его для меня с новой стороны, сильная антивоенная драма. Давно хотел прочитать именно это произведение, ведь оно считается первым принесшим Ремарку популярность. Читал я в итоге с большими перерывами в течение двух месяцев, но каждый раз возвращаясь к книге гнетущая атмосфера вновь окутывала, она чувствуется в каждой строчке. Рекомендую к прочтению. </span></p><h3 id='март-1'><strong><span>Март</span></strong></h3><p><span>Март получился достаточно скомканным, в данный момент переключился не только на художественную, но и профессиональную литературу, плюс заболел. В общем, так и не закончил не одного произведения. </span></p><h3 id='февраль-1'><strong><span>Февраль</span></strong></h3><ul><li><strong><span>Агата Кристи &quot;Свидетель обвинения&quot;</span></strong></li></ul><p><span>Февраль провел в переездах и уже по традиции взял с собой произведения Агаты Кристи. Данная история выделяется из ранее прочитанного, запутанный сюжет, который способен преподнести сюрпризы. </span></p><ul><li><strong><span>Агата Кристи &quot;Тайна китайской вазы&quot;</span></strong></li></ul><p><span>Неплохое произведение, но чем то особенным не запомнилось, решил поделиться мыслями спусти месяц и даже с трудом могу вспомнить детали сюжета. </span></p><h3 id='январь-1'><strong><span>Январь</span></strong></h3><ul><li><strong><span>Агата Кристи &quot;Мышеловка&quot;</span></strong></li></ul><p><span>В начале января мое путешествие продолжилось, а в телефоне еще остались скачанные ранее произведения. Персонажи немного бесят. Но в целом понравилось. </span></p><ul><li><strong><span>Жорж Сименон &quot;Мегрэ и строптивые свидетели&quot;</span></strong></li></ul><p><span>Взяв произведение Жоржа Сименона, то можно быть уверенным, что оно будет хорошим. В отличие от Агаты Кристи, в которых встречаются как что-то интересное, так и явно проседающие произведения. Но в тоже время не могу сказать что произведения о Мегрэ меня хоть в чем то удивили. Хороший, но средний сюжет. </span></p><h1 id='2022'><span>2022</span></h1><h3 id='декабрь-1'><strong><span>Декабрь</span></strong></h3><ul><li><strong><span>Агата Кристи &quot;Тайна испанской шали&quot;</span></strong></li></ul><p><span>В декабре отправился в дорогу домой взяв с собой несколько произведений Агаты Кристи. Тайна испанской шали из всего прочитанного понравилось больше всего. Интересный, динамичный сюжет.</span></p><ul><li><strong><span>Агата Кристи &quot;Спиритический сеанс&quot;</span></strong></li></ul><p><span>Не сказал бы что это какая то детективная история. Скорее что то из фантастики. Фантастику я люблю, но данное произведение не зацепило. Скорее даже вызвало некое отторжение.</span></p><ul><li><strong><span>Агата Кристи &quot;Таинственный посетитель&quot;</span></strong></li></ul><p><span>Достаточно предсказуемая история, более поверхностная чем прошлые. </span></p><h3 id='ноябрь-1'><strong><span>Ноябрь</span></strong></h3><ul><li><strong><span>Джордж Оруэлл &quot;Скотский двор&quot;</span></strong></li></ul><p><span>Книга описывающая путь к миру антиутопии в отличие от множества произведений, которые демонстрируют лишь финальную точку. Основная мысль, которую на мой взгляд хотел преподнести автор, заключается в том, что жадность берет вверх над сознанием. Мое отношение к этой идеи отлично, я все же склонен верить в то, что человечество развевается и способно к осознанности. Но думаю книга достойна прочтения и дает пищу для размышлений.</span></p><h3 id='октябрь-1'><strong><span>Октябрь</span></strong></h3><ul><li><strong><span>Китами Масао &quot;Самурай без меча&quot;</span></strong></li></ul><p><span>Случайно наткнулся на данную книгу, читается довольно легко. По своей сути справочник для руководителя, написанный на основе жизни Хидэёси Тоётоми крестьянине сумевшим стать регентом императора. Книгу вряд ли можно назвать исторической, я не силен в японской истории, но вроде книга содержит и додуманные факты. Но сама фигура Хидэёси Тоётоми вполне реальна и было интересно узнать о нем узнать.  </span></p><ul><li><strong><span>Михаил Лермонтов &quot;Герой нашего времени&quot;</span></strong></li></ul><p><span>В школе я достаточно мало читал, однако сейчас, в сознательном возрасте получаю двойное удовольствие от классики. Смотреть на героев имея собственный жизненный опыт гораздо интереснее.  </span></p><h3 id='сентябрь-1'><strong><span>Сентябрь</span></strong></h3><ul><li><strong><span>Станислав Лем &quot;Солярис&quot;</span></strong></li></ul><p><span>Давно не получал такого удовольствия от книги. Динамика, сюжет. Начало книги немного пугающие, держит в напряжение. Концовка дает пищу для размышлений. Книга не дает ответов, но призывает задуматься. Появилось желание даже купить физический вариант, а такого у меня давно не было.</span></p><ul><li><strong><span>Аркадий и Борис Стругацкие &quot;Путь на Амальтею&quot;</span></strong></li></ul><p><span>Решил устроить месяц космической фантастики. В целом произведение хорошие. Но, наверное, не так сильно тронуло, как Солярис.</span></p><h3 id='август-1'><strong><span>Август</span></strong></h3><ul><li><strong><span>Стивен Хокинг &quot;Чёрные дыры и молодые вселенные&quot;</span></strong></li></ul><p><span>Сборник интервью, статей, лекций Стивена Хокинга. В целом, довольно интересно, особенно если хочется разнообразить жизнь. Однако многие идеи повторяются из главы в главу, из за чего складывается ощущение, что читаешь одну и ту же главу с небольшими изменениями. Для меня самой интересной главой стало рассуждение о предопределённости всех событий на свете. </span></p><ul><li><strong><span>Дмитрий Петров &quot;Как учить иностранные языки самостоятельно&quot;</span></strong></li></ul><p><span>Человек знает более 60 языков, поэтому было интересно узнать его мысли по поводу изучения языков. Какой то секретной информации не было, просто нужно делать.  </span></p><h3 id='июль-1'><strong><span>Июль</span></strong></h3><ul><li><strong><span>Оакли Барбара &quot;Думай как математик&quot;</span></strong></li></ul><p><span>На самом деле можно прочитать только вывод в последней главе, где собраны 10 советов что следует делать и 10 советов чего лучше не делать, чтобы быстрее учиться.</span></p><hr /><p><span>Сложно возвращаться к привычкам после перерыва. Но надеюсь скоро немного нормализую жизнь и вернусь в привычный режим.</span></p><h3 id='июнь-1'><strong><span>Июнь</span></strong></h3><p><span>Немного перегорел и решил взять небольшую паузу после ведьмака.</span></p><p><span>А в конце месяца меня ждала смена работы и переезд в другой город.</span>
+<span>В общем до книг в Июне я так и не добрался.</span></p><h3 id='май-1'><strong><span>Май</span></strong></h3><ul><li><strong><span>Анджей Сапковский &quot;Ведьмак: Кровь эльфов&quot;</span></strong></li><li><strong><span>Анджей Сапковский &quot;Ведьмак: Час презрения&quot;</span></strong></li><li><strong><span>Анджей Сапковский &quot;Ведьмак: Крещение огнем&quot;</span></strong></li><li><strong><span>Анджей Сапковский &quot;Ведьмак: Башня ласточки&quot;</span></strong></li><li><strong><span>Анджей Сапковский &quot;Ведьмак: Владычица озера&quot;</span></strong></li></ul><p><span>Трудно говорить о каждой книге по отдельности, так как сюжет у истории сквозной, поэтому захотелось высказаться целом о серии. То как я запомнил серию при первом прочтение очень сильно отличается, от тех эмоций что я испытал сейчас. Буквально на месяц полностью погрузился в мир Ведьмака и это было здорово. Чем ближе к концу тем более растягивается повествование, и возможно по этому я не дочитал полностью всю серию при первом прочтение. Но концовка мне понравилась, история полностью завершена. Очень советую к прочтению.</span></p><h3 id='апрель-2'><strong><span>Апрель</span></strong></h3><ul><li><strong><span>Анджей Сапковский &quot;Ведьмак: Последнее желание&quot;</span></strong></li></ul><p><span>Много лет назад начинал читать сагу о ведьмаке, но в итоге не дочитал пару книг. Были мысли перечитать и узнать, чем в итоге все закончилось. Но была надежда на хорошую экранизацию, однако сериал пошел куда то не туда.</span></p><ul><li><strong><span>Анджей Сапковский &quot;Ведьмак: Меч предназначения&quot;</span></strong></li></ul><p><span>Вторую книгу запомнил намного лучше, чем первую, поэтому перечитывать интереснее было первую книга из цикла. Вообще читается очень легко, когда читал книги впервые ничего не знал о лоре ведьмака. Но сейчас зная мир более глубоко читать становится интереснее.</span></p><h3 id='март-2'><strong><span>Март</span></strong></h3><ul><li><strong><span>Евгений Замятин &quot;Мы&quot;</span></strong></li></ul><p><span>Решил больше погрузиться в мир антиутопий и познакомился с произведением Замятина. Больше всего зацепил момент передачи душевного состояния, эмоций главного героя посредствам динамики текста. </span></p><ul><li><strong><span>Федор Достоевский &quot;Братья Карамазовы&quot;</span></strong></li></ul><p><span>Сильное произведение, цепляет. Но я не очень люблю открытые концовки. После прочтения есть чувство легкой опустошённости и сложно сразу после прочтения описать мысли по данному роману. </span></p><h3 id='февраль-2'><strong><span>Февраль</span></strong></h3><ul><li><strong><span>Кэл Ньюпорт &quot;Цифровой минимализм&quot;</span></strong></li></ul><p><span>Ранее с работами Кэла не был знаком, но читал о нем неплохие отзывы. Для меня книга была ценна в первую очередь не предостережениями, о том как опасны современные технологии и куда они ведут, а идеями о том, как разнообразить свой досуг.</span></p><ul><li><strong><span>Жорж Сименон &quot;Револьвер Мегрэ&quot;</span></strong><span> </span></li></ul><p><span>Второе прочитанное мною произведение о приключениях Мегрэ, неплохо подходит чтобы расслабиться после работы. </span></p><h3 id='январь-2'><strong><span>Январь</span></strong></h3><ul><li><strong><span>Джордж Оруэлл &quot;1984&quot;</span></strong></li></ul><p><span>Много раз слышал про эту книгу, но ни разу ее не читал. Побуждает задуматься. Книга интересна не сюжетом, персонажами, а идей. </span></p><ul><li><strong><span>Федор Достоевский &quot;Честный вор&quot;</span></strong></li></ul><p><span>После 1984 захотелось что то более простое и решил почитать рассказы Достоевского. Сам рассказ не очень зацепил, но, наверное, у меня к нему были завышенные ожидания.</span></p><h1 id='2021'><span>2021</span></h1><h3 id='декабрь-2'><strong><span>Декабрь</span></strong></h3><ul><li><strong><span>Жорж Сименон &quot;Мегрэ и порядочные люди&quot;</span></strong><span> </span></li></ul><p><span>Классический детектив. Неплохая история и читается легко, но фаворитом среди детективов на данный момент для является Карточный домик, произведение Чейза в разы больше понравился. </span></p><ul><li><strong><span>Ван Гог &quot;Письма к друзьям&quot;</span></strong></li></ul><p><span>До прочтения писем ничего не знал о биографии Ван Гога. Да и с его картинами был слабо знаком. Очень удивительно, знакомиться с человеком по письмам. Но его слова, мысли, идеи заинтересовали меня. Сразу после того как дочитал последнее письмо, открыл википедию и ознакомился с историей его жизни, а затем просмотрел великолепный фильм &quot;С любовью, Винсент&quot;, еще больше погрузившись в историю его жизни. Письма и фильм удивительным образом дополнили друг друга. Советую к прочтению и просмотру.</span></p><h3 id='ноябрь-2'><strong><span>Ноябрь</span></strong></h3><ul><li><strong><span>Джеймс Хэдли Чейз &quot;Карточный домик&quot;</span></strong><span> </span></li></ul><p><span>Шикарный сюжет. Необычная подача для детектива, нет никакой загадки, скорее похоже на шахматную партию, когда расставлены все фигуры и ты за ними наблюдаешь. И по началу кажется, что слишком просто, и где то есть подвох. Но подвох заключается не в фигурах, а в глубине ходов. Единственный момент такого повествования, то что в начале книги представляется разом много персонажей, и их довольно легко перепутать. Но погружаясь в сюжет, каждый герой раскрывается. </span></p><ul><li><strong><span>Иван Тургенев &quot;Отцы и дети&quot;</span></strong></li></ul><p><span>Очень интересно смотрится на контрасте с Карточным домиком. Там на первое выходит сюжет, а в отцах и детях личности. Сюжет прост, но персонажи хорошо прописаны. В процессе интереснее читать Чейза, но послевкусие сильнее у Тургенева. </span></p><h3 id='октябрь-2'><strong><span>Октябрь</span></strong></h3><ul><li><strong><span>Герберт Уэллс &quot;Остров доктора Моро&quot;</span></strong><span> </span></li></ul><p><span>Вторая книга Герберта Уэльса, которую я прочитал. И тоже является классикой фантастики. Понравилась больше войны миров, сюжет более динамичный, события постоянно развиваются и ускоряются.</span></p><ul><li><strong><span>Тимоти Феррис &quot;Как работать по четыре часа в неделю&quot;</span></strong></li></ul><p><span>Несколько раз начинал читать и первый раз когда завершилась успехом и дочитал книгу до конца. Много практических советов, книга из тех что нужно не просто читать, а делать. Но даже само прочтение может дать пищу для размышления.</span></p><h3 id='сентябрь-2'><strong><span>Сентябрь</span></strong></h3><ul><li><strong><span>Борис Акунин и д.р. &quot;Хайгейтское кладбище&quot;</span></strong><span> </span></li></ul><p><span>В целом интересная задумка. По сути произведение состоит из двух частей, более философская/историческая первая и сатирическая вторая. И первая часть мне понравилась, а вторая пришлась не по вкусу. Сама книги включает несколько рассказов, но я остановился только на Хайгейтском кладбище и продолжать читать дальше пока что желания нет.</span></p><ul><li><strong><span>Джошуа Беккер &quot;Меньше значит больше. Минимализм как путь к осознанной и счастливой жизни&quot;</span></strong></li></ul><p><span>Несколько лет назад познакомился с идеями минимализма. Они удивительно лаконично наложились на мою жизнь и сделали её лучше. Рекомендую к прочтению.</span></p><h3 id='август-2'><strong><span>Август</span></strong></h3><ul><li><strong><span>Роберт Шекли &quot;Цивилизация статуса&quot;</span></strong><span> </span></li></ul><p><span>Интересное фантастическое произведение. Интересные задумки, динамический сюжет. Не что то глубокое, но очень хорошая книга с довольно неожиданной, лично для меня, развязкой. </span></p><ul><li><strong><span>Артуро Перес-Реверте &quot;Тень орла&quot;</span></strong></li></ul><p><span>Небольшое произведение, качественный черный юмор. Первый испанский автор, которого я прочитал. Могу рекомендовать к прочтению.</span></p><h3 id='июль-2'><strong><span>Июль</span></strong></h3><ul><li><strong><span>Эрих Мария Ремарк &quot;Обратный путь&quot;</span></strong><span> </span></li></ul><p><span>В этой книги Ремарк открылся для меня с новой стороны. Во всех книгах Ремарка, которые я успел прочитать, война летала где то в атмосфере, но она была где то позади. Она никогда не пропитывала собой сюжет так сильно, как в этом произведение. В книги практически отсутствует романтическая линия, в ней куда больше времени отдается дружбе, товариществу. Книга заставляет задуматься. </span></p><ul><li><strong><span>Михаил Булгаков &quot;Мастер и Маргарита&quot;</span></strong></li></ul><p><span>В школе так и не прочитал, ограничился просмотром фильма, и только сейчас добрался до данного произведения. Когда смотрел фильм мало что вообще понимал, прочитав оригинал все встало на места. В целом мне нравится как пишет Булгаков, но не могу сказать, что сильно впечатлен.</span></p><h3 id='июнь-2'><strong><span>Июнь</span></strong></h3><ul><li><strong><span>Харуки Мураками &quot;Слушай песню ветра&quot;</span></strong></li></ul><p><span>Давно хотел почитать что нибудь из азиатской литературы. В целом после прочтения не могу сформировать какого то окончательного мнения о данной книге. Это скорее сборник эпизодов, не же ли какое то полное, законченное произведение. Какие то эпизоды понравились, какие то оставили равнодушным. Книга входит в трилогию и возможно прочитав весь цикл сложится какая то конечная картинка, а возможно задумка и была в том чтобы эта картинка так так и не сформировалась.</span></p><ul><li><strong><span>Федор Достоевский &quot;Игрок&quot;</span></strong></li></ul><p><span>Нет такой глубины, как в Преступление и наказание, но книга очень достойная. Сюжет немного затянут в начале, но разгоняется с каждой главой. Хорошо прописанные персонажи, качественный юмор. Роман про азарт, страсть к игре, деньгам, людям.</span></p><h3 id='май-2'><strong><span>Май</span></strong></h3><ul><li><strong><span>Иэн Бэнкс &quot;Осиная фабрика&quot;</span></strong></li></ul><p><span>Трэш, чернуха, местами неприятно читать. Очень на любителя, если начав читать не зашло, то лучше не продолжать. Дальше лучше не будет. Наткнулся на комментарий, что в конце книги будет классный твист, поэтому дочитал до конца. Но твист оказался так себе. </span></p><ul><li><strong><span>Михаил Булгаков &quot;Жизнь господина де Мольера&quot;</span></strong></li></ul><p><span>Никогда до этого не читал библиографические произведения, но достаточно давно хотел попробовать этот жанр. На книгу наткнулся случайно, про Мольера до прочтения ничего не знал. Однако книга очень хорошо написана, не сухая с юмором. Даже захотелось еще Булгакова почитать, я его книги как то стороной все время обходил, хоть с его творчеством особо и не был знаком.</span></p><h3 id='апрель-3'><strong><span>Апрель</span></strong></h3><ul><li><strong><span>Элиезер Юдковский &quot;Гарри Поттер и методы рационального мышления&quot;</span></strong></li></ul><p><span>Книга балансирует между фантазии, сатирой и научной литературой. Не ровная, местами становится достаточно скучно, а затем идут несколько глав, которые читаешь без остановки. Очень необычный микс жанров создает что то новое и хотя бы ради этого советовал бы прочитать данное произведение.</span></p><ul><li><strong><span>Роберт Кийосаки &quot;Богатый папа, бедный папа&quot;</span></strong></li></ul><p><span>Спустя несколько лет решил перечитать, захотелось что то легкое. Книга небольшая читается за вечер, в ней достаточно простые идеи. История подается как биографическая, но на деле вся книга выдумка. Так что как и к любой информации нужно относится критически. Лично на мой взгляд &quot;Самый богатый человек в Вавилоне&quot; намного лучше. Так что если не читали, то советую именно ее. </span></p><h3 id='март-3'><strong><span>Март</span></strong></h3><ul><li><strong><span>Даниэль Канеман &quot;Думай медленно... Решай быстро&quot;</span></strong></li></ul><p><span>Книга содержит в себе множество интересных фактов о работе мозга. В ней рассказывается о заблуждениях, парадоксах, которые встречаются в процессе мышления. Идеальная книга для любителей статистики и психологии.</span></p><ul><li><strong><span>Джон Эйкафф &quot;Закончи то, что начал. Научись доводить дела до конца&quot;</span></strong></li></ul><p><span>Иронично, что взявшись за эту книгу в первый раз я её так и не дочитал... Книга не стала для меня откровением, многие описанные выводы я знал и до прочтения. Но в целом довольно приятно напомнить себе о том, что ты и так уже знал. </span></p><h3 id='февраль-3'><strong><span>Февраль</span></strong></h3><ul><li><strong><span>Жюль Верн &quot;Дети капитана Гранта&quot;</span></strong></li></ul><p><span>История понравилась, но не зацепила. Идеально подойдет чтобы расслабиться перед сном.</span></p><ul><li><strong><span>Г. Р. Хаггард &quot;Копи царя Соломона&quot;</span></strong></li></ul><p><span>Сюжет и локации очень похожи на детей капитана гранта. Но тем сильнее видно отличие авторов. Хаггард пишет более динамично из за чего события кажутся более яркими. Книга понравилась, я начинал ее читать несколько лет назад, но остановился на первой главе, в тот момент история меня не зацепила. Однако сейчас книга произвела на меня очень хорошее впечатление, и я могу рекомендовать ее к прочтению.</span></p><h3 id='январь-3'><strong><span>Январь</span></strong></h3><ul><li><strong><span>Герберт Уэллс &quot;Война миров&quot;</span></strong></li></ul><p><span>Самое удивительное в этой книги то, что она вышла в 1897 году. Было очень интересно почитать о том, как люди больше века назад видели жизнь в наше время.</span></p><ul><li><strong><span>Терри Пратчетт &quot;Эрик&quot;</span></strong></li></ul><p><span>Я не особый любитель сатиры, но данная книга довольно легко читается и в целом мне понравилась. Произведение является четвертой частью цикла книг о волшебнике плоского мира Ринсвинде. Однако её можно читать без привязки к остальным книгам, во всяком случае для меня книга стала первой из этого цикла. И не зная ничего об устройстве вселенной плоского мира и в частности о Ринсвинде мне все равно было интересно.</span></p><p>&nbsp;</p></div></div>
+</body>
+</html>
